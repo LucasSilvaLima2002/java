@@ -1,0 +1,35 @@
+package fiap.com.br.botão;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JOptionPane;
+
+import fiap.com.br.Produto.Produto;
+import fiap.com.br.janela.Janela;
+
+public class BotãoListener implements ActionListener{
+
+	
+
+	private Janela view;
+
+	public BotãoListener(Janela view) {
+		this.view = view;
+	
+		
+	}
+	
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		
+		Produto produto = new Produto();
+		
+		
+	JOptionPane.showMessageDialog(null, "teste");
+		
+	}
+
+	
+	
+}

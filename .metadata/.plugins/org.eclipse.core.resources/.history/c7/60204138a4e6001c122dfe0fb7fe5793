@@ -1,0 +1,72 @@
+package fiap.com.br.Produto;
+
+import java.math.BigDecimal;
+
+public class Produto {
+
+	private String nome;
+	private String rua;
+	private String bairro;
+	private String cidade;
+	private String estado;
+	private BigDecimal preco;
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public String getRua() {
+		return rua;
+	}
+
+	public void setRua(String rua) {
+		this.rua = rua;
+	}
+
+	public String getBairro() {
+		return bairro;
+	}
+
+	public void setBairro(String bairro) {
+		this.bairro = bairro;
+	}
+
+	public String getCidade() {
+		return cidade;
+	}
+
+	public void setCidade(String cidade) {
+		this.cidade = cidade;
+	}
+
+	public String getEstado() {
+		return estado;
+	}
+
+	public void setEstado(String estado) {
+		this.estado = estado;
+	}
+
+	public BigDecimal getPreco() {
+		return preco;
+	}
+
+	public void setPreco(BigDecimal preco) {
+		this.preco = preco;
+	}
+
+	@Override
+	public String toString() {
+		return "Produto [nome=" + nome + ", rua=" + rua + ", bairro=" + bairro + ", cidade=" + cidade + ", estado="
+				+ estado + ", preco=" + preco + "]";
+	}
+
+	
+	
+	
+
+}

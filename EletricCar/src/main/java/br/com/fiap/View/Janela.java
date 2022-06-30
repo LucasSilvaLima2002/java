@@ -1,0 +1,164 @@
+package br.com.fiap.View;
+
+import java.util.List;
+
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTabbedPane;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
+
+import br.com.fiap.Controller.BotaoListener;
+import br.com.fiap.Dao.EstadoDao;
+import br.com.fiap.Dao.PostoDao;
+import br.com.fiap.Model.Estado;
+import br.com.fiap.Model.Posto;
+
+public class Janela extends JFrame {
+	
+/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+//	private static final long serialVersionUID = -4178104598462799075L;
+
+	private JComboBox<Estado> comboBoxEstados = new JComboBox<Estado>();
+	private JComboBox<Integer> comboAvaliacao = new JComboBox<Integer>();
+	private JComboBox<String> comboTipos = new JComboBox<String>();
+	
+	private JTabbedPane abas = new JTabbedPane();
+	private JPanel abaCadastro = new JPanel();
+	private JPanel abaConsulta = new JPanel();
+	
+	private JTextField txtNome, txtRua, txtNmrRua, txtCep, txtComplemento;
+	private JTextField txtBairro, txtCidade;
+	private JTextField txtPrecoKwh;
+	private JButton btnSalvar;
+    
+	private String[] colunas = {"Nome", "Endereço", "Número", "Complemento", "Bairro", "Cidade", "Estado", "UF", "Preço", "Tipo Plug", "Avaliação"};
+	private DefaultTableModel tableModel = new DefaultTableModel(colunas, 0);
+	private JTable tabela = new JTable(tableModel);
+	
+	public Janela()
+	{
+		setSize(400, 400);
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+	}
+	
+	private void initComponents()
+	{
+		txtNome = new JTextField(20);
+		txtRua = new JTextField(20);
+		txtNmrRua = new JTextField(20);
+		txtCep = new JTextField(20);
+		txtComplemento = new JTextField(20);
+		txtBairro = new JTextField(20);
+		txtCidade = new JTextField(20);
+		txtPrecoKwh = new JTextField(20);
+		
+		btnSalvar = new JButton("Salvar");
+	}
+	
+	public void init()
+	{
+		initComponents();
+
+		JLabel label; 
+		
+		label = new JLabel("Nome do posto:");	
+		abaCadastro.add(label);
+		abaCadastro.add(txtNome);
+		
+		label = new JLabel("Rua:");
+		abaCadastro.add(label);
+		abaCadastro.add(txtRua);
+		
+		label = new JLabel("Número:");
+		abaCadastro.add(label);
+		abaCadastro.add(txtNmrRua);
+		
+		label = new JLabel("CEP:");
+		abaCadastro.add(label);
+		abaCadastro.add(txtCep);
+		
+		label = new JLabel("Complemento:");
+		abaCadastro.add(label);
+		abaCadastro.add(txtComplemento);
+		
+		label = new JLabel("Bairro:");
+		abaCadastro.add(label);
+		abaCadastro.add(txtBairro);
+		
+		label = new JLabel("Cidade:");
+		abaCadastro.add(label);
+		abaCadastro.add(txtCidade);
+		
+		label = new JLabel("Estado:");		
+		abaCadastro.add(label);
+		
+		List<Estado> estados = new EstadoDao().consultarTodos();
+		estados.forEach(estado -> comboBoxEstados.addItem(estado));
+		abaCadastro.add(comboBoxEstados);
+		
+		label = new JLabel("Avaliação:");
+		abaCadastro.add(label);
+		comboAvaliacao.addItem(0);
+		comboAvaliacao.addItem(1);
+		comboAvaliacao.addItem(2);
+		comboAvaliacao.addItem(3);
+		comboAvaliacao.addItem(4);
+		comboAvaliacao.addItem(5);
+		abaCadastro.add(comboAvaliacao);
+		
+		label = new JLabel("Tipo de plug:");
+		abaCadastro.add(label);
+		comboTipos.addItem("Tipo 1");
+		comboTipos.addItem("Tipo 2");
+		comboTipos.addItem("CSS2");
+		comboTipos.addItem("CHAdeMO");
+		abaCadastro.add(comboTipos);
+		
+		label = new JLabel("Preço KWh:");
+		abaCadastro.add(label);
+		abaCadastro.add(txtPrecoKwh);
+	
+		abaCadastro.add(btnSalvar);			
+		
+		BotaoListener listener = new BotaoListener(this);
+		btnSalvar.addActionListener(listener);
+		
+		carregarDados();
+		
+		abas.add(abaCadastro, "Cadastro");
+		abas.add(new JScrollPane(tabela), "Consulta");
+		add(abas);
+		
+		setVisible(true);
+	}
+	
+	public void carregarDados()
+	{
+		tableModel.setRowCount(0);
+		List<Posto> lista = new PostoDao().consultarTodos();
+		lista.forEach(posto -> tableModel.addRow(posto.getData()));
+	}
+	
+	public JTextField getTxtNome() { return this.txtNome; };
+	public JTextField getTxtRua() { return this.txtRua; };
+	public JTextField getTxtNmrRua() { return this.txtNmrRua; };
+	public JTextField getTxtCep() { return this.txtCep; };
+	public JTextField getTxtComplemento() { return this.txtComplemento; };
+	public JTextField getTxtBairro() { return this.txtBairro; };
+	public JTextField getTxtCidade() { return this.txtCidade; };
+	public JComboBox<Integer> getComboAvaliacao() { return this.comboAvaliacao; };
+	public JComboBox<String> getComboTipoPlug() { return this.comboTipos; };
+	public JTextField getTxtPrecoKwh() { return this.txtPrecoKwh; };
+	public JComboBox<Estado> getComboEstados() { return this.comboBoxEstados; }	
+	
+
+}

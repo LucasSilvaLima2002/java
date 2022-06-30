@@ -1,0 +1,48 @@
+package fiap.com.br.botão;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.math.BigDecimal;
+import java.util.List;
+
+import javax.swing.JOptionPane;
+
+import fiap.com.br.Produto.Produto;
+import fiap.com.br.ProdutoDao.ProdutoDao;
+import fiap.com.br.janela.Janela;
+import fiap.com.br.*;
+
+public class BotãoListener implements ActionListener{
+
+	
+
+	private Janela view;
+	private ProdutoDao dao = new ProdutoDao();
+
+	public BotãoListener(Janela view) {
+		this.view = view;
+	
+		
+	}
+	
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		
+		Produto produto = new Produto();
+		produto.setNome(view.getNomeTxt().getText());
+		produto.setBairro(view.getBairroTxt().getText());
+		produto.setPreco(new BigDecimal(view.getprecoText().getText()));
+		produto.setRua(view.getRuaTxt().getText());
+		produto.setCidade(view.getCidadeTxt().getText());
+		produto.setEstado(view.getEstadoTxt().getText());
+		
+		
+	dao.inserir(produto);
+	List<Produto> lista = dao.listarTodos();
+	lista.forEach(System.out::println);
+		
+	}
+
+	
+	
+}

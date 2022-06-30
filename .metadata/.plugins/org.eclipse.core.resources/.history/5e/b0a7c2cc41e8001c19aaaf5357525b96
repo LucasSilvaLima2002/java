@@ -1,0 +1,115 @@
+package fiap.com.br.janela;
+
+import java.awt.FlowLayout;
+import java.awt.Font;
+
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
+
+import antlr.collections.impl.Vector;
+
+
+import javax.swing.BoxLayout;
+import fiap.com.br.Produto.Produto;
+import fiap.com.br.ProdutoDao.ProdutoDao;
+import fiap.com.br.StarRating.StarRater;
+import fiap.com.br.botão.BotãoListener;
+
+import java.awt.BorderLayout;
+import java.awt.GridLayout;
+import java.util.List;
+
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+import javax.swing.JScrollPane;
+import javax.swing.JTabbedPane;
+import javax.swing.JTable;
+import javax.swing.JTextArea;
+import javax.swing.JLabel;
+
+public class Janela extends JFrame {
+
+	private JTabbedPane abas = new JTabbedPane();
+	private JPanel painelCadastro = new JPanel();
+	private JLabel nome = new JLabel("Nome: ");
+	private JTextField nomeTxt = new JTextField();
+	private JLabel rua = new JLabel("Rua: ");
+	private JTextField ruaTxt = new JTextField(20);
+	private JLabel bairro = new JLabel("Bairro: ");
+	private JTextField bairroTxt = new JTextField(20);
+	private JLabel cidade = new JLabel("Cidade: ");
+	private JTextField cidadeTxt = new JTextField(20);
+	private JLabel estado = new JLabel("Estado: ");
+	private JTextField estadoTxt = new JTextField(20);
+	private JLabel plug = new JLabel("Tipo de plug:");
+	JRadioButton tipo1 = new JRadioButton("Tipo 1");
+	JRadioButton tipo2 = new JRadioButton("Tipo 2");
+	JRadioButton CSS2 = new JRadioButton("CSS2");
+	JRadioButton CHAdeMO = new JRadioButton("CHAdeMO");
+	private JLabel preco = new JLabel("Preço do kw: ");
+	private JTextField precoText = new JTextField(20);
+	private JLabel avaliacao = new JLabel("Avaliação: ");
+	private JButton btnSalvar = new JButton("Salvar");
+	String[] colunas = { "id", "nome", "rua", "bairro", "cidade", "estado", "preço" };
+	DefaultTableModel tableModel = new DefaultTableModel(colunas, 0);
+	JTable tabela = new JTable(tableModel);
+	
+	MeuLabel titulo = new MeuLabel("Título");
+	MeuLabel sinopse = new MeuLabel("Sinopse");
+
+
+	public Janela() {
+		getContentPane().setLayout(null);
+		setSize(1000, 1000);
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setVisible(true);
+
+	}
+
+	public void init() {
+		
+		JPanel center = new JPanel();
+		center.setLayout(new BoxLayout(center, BoxLayout.PAGE_AXIS));
+
+		JPanel tituloContainer = new JPanel();
+		tituloContainer.setLayout(new FlowLayout(0, 0, 5));//alinhamento, Hgap, Vgap
+		tituloContainer.add(nome);
+		tituloContainer.add(nomeTxt);
+
+		
+		
+		
+		 
+
+
+	}
+
+	public JTextField getNomeTxt() {
+		return nomeTxt;
+	}
+
+	public JTextField getRuaTxt() {
+		return ruaTxt;
+	}
+
+	public JTextField getBairroTxt() {
+		return bairroTxt;
+	}
+
+	public JTextField getCidadeTxt() {
+		return cidadeTxt;
+	}
+
+	public JTextField getEstadoTxt() {
+		return estadoTxt;
+	}
+
+	public JTextField getprecoText() {
+		return precoText;
+	}
+
+}

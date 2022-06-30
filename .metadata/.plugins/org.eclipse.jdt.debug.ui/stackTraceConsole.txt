@@ -1,0 +1,2 @@
+if (this.direction == 90 || this.direction == 270)
+			pos_ant = this.getX();

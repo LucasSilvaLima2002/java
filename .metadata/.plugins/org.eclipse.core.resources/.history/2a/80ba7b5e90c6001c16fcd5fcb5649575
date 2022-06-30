@@ -1,0 +1,48 @@
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTabbedPane;
+import javax.swing.JTextField;
+import javax.swing.border.LineBorder;
+
+import tentativa.Botao;
+
+public class Teste1 extends JFrame {
+
+public static void main(String[] args) {
+	
+	new Teste1();
+	new Botao();
+	
+}
+
+	public Teste1() {
+		
+
+		setTitle("Fiap 2Movies");
+		setBounds(100, 100, 542, 312);
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setLocationRelativeTo(null);
+		setResizable(false);
+		setLocationRelativeTo(null);
+		setVisible(true);
+		getContentPane().setLayout(null);
+		
+	
+		
+	}
+	
+	
+	
+		
+	}
+
+
+	
+	
+	
+
